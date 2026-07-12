@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+NiceCoffee
+{% endblock %}
+
+{% block body %}
+<h1>Меню кав'ярні:</h1>
+<ul style="font-size:25px; list-style-type: '• '; margin-left:20px;">
+    <li>Еспресо: 40₴</li>
+    <li>Капучино: 55₴</li>
+    <li>Лате макіато: 60₴</li>
+    <li>Айс Лате: 70₴</li>
+    <li>Флет Вайт: 65₴</li>
+    <li>Круасан з шоколадом: 50₴</li>
+    <li>Круасан з полуницею: 50₴</li>
+</ul>
+<img src="{{ url_for('static', filename='images/croissant.jpg') }}"
+    alt ="croissant">
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+NiceCoffee
+{% endblock %}
+
+{% block body %}
+  <h2>Наші контакти</h2>
+  <ul style="font-size:25px; list-style-type: '• '; margin-left:20px;">
+    <li>Адреса: м. Київ, вул. Хрещатик, 24</li>
+    <li>Графік роботи: Щодня з 8:00 до 21:00</li>
+    <li>Телефон: +380 (44) 123-45-67</li>
+  </ul>
+
+  <hr>
+
+  <h2>Залиши відгук</h2>
+  <form action="/reviews" method="POST">
+  
+    {% if session.get('user_name') %}
+      <p>Ви пишете як: <strong>{{ session['user_name'] }}</strong></p>
+    {% else %}
+      <p>
+        <label>Ваше ім'я</label><br>
+        <input type="text" name="client_name" required>
+      </p>
+    {% endif %}
+
+  <p>
+      <label>Ваш відгук:</label><br>
+      <textarea name="client_review" rows="4" required></textarea>
+  </p>
+  <button type="submit">Надіслати відгук</button>
+</form>
+
+  <hr>
+
+  <h2>Відгуки гостей</h2>
+  {% for review in reviews %}
+    <div>
+        <strong>{{ review.name }}</strong>
+        <p>{{ review.text }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
